@@ -51,6 +51,6 @@ int search_file(const char *fpath);
 /*
 * Get next empty index STILL Don't know what is going on here!
 */
-int search_empty(void);
+int search_empty();
 
 #endif //FILESYSTEM_FILE_H
