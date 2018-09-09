@@ -3,4 +3,4 @@ project(FileSystem)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(FileSystem main.cpp include/block.h include/log.h)
+add_executable(FileSystem main.cpp include/block.h include/log.h include/file.h include/inode_entry.h)

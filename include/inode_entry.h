@@ -1,0 +1,11 @@
+//
+// Created by M78 on 9/9/18.
+//
+
+#ifndef FILESYSTEM_INODE_ENTRY_H
+#define FILESYSTEM_INODE_ENTRY_H
+
+
+
+
+#endif //FILESYSTEM_INODE_ENTRY_H
