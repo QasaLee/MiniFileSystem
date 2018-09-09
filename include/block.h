@@ -9,6 +9,15 @@
  * Header file include
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <string.h>
+#include <unistd.h>
+#include "log.h"
 
 
 
