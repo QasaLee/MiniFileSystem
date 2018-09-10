@@ -24,8 +24,7 @@ inode* inode_entries[INODE_NUM];
     char filename[32];
 } inode_entry;*/
 
-inode* Inode_Entry(int i)
-{
+inode* Inode_Entry(int i) {
     if ( i < 0 || i >= INODE_NUM )
         return NULL;
 
@@ -35,8 +34,7 @@ inode* Inode_Entry(int i)
 /*
  * Just get the init pwd value to CLI
  */
-char* dir_init()
-{
+char* dir_init() {
     init_superblock();
     memset(inode_entries, 0, sizeof(inode_entries));
     LOG_DEBUG("init_pwd\n");
@@ -75,8 +73,7 @@ char* dir_init()
     return init_pwd;
 }
 
-int insert_inode_into_table(inode* node)
-{
+int insert_inode_into_table(inode* node) {
     int i;
     for (i = 0; i < INODE_NUM; i++) {
         size_t filename_len = strlen(Inode_Entry(i)->filename);
@@ -91,8 +88,7 @@ int insert_inode_into_table(inode* node)
     return -1;
 }
 
-int delete_inode_from_table(inode* node)
-{
+int delete_inode_from_table(inode* node) {
     int i;
     for (i = 0; i < INODE_NUM; i++) {
         inode *n = Inode_Entry(i);
@@ -114,8 +110,7 @@ int delete_inode_from_table(inode* node)
     return -1;
 }
 
-inode* get_inode_from_path(const char *path)
-{
+inode* get_inode_from_path(const char *path) {
     int i;
     for (i = 0; i < INODE_NUM; i++) {
         inode* node = Inode_Entry(i);
@@ -139,8 +134,7 @@ inode* get_inode_from_path(const char *path)
  *please declare a char ls_list[500] as input, after the function call, ls_list will have ls result.
  *success return 0, failed return -1
  */
-int dir_ls(char* ls_list, const char *filename)
-{
+int dir_ls(char* ls_list, const char *filename) {
     int i, j;
     char *list[1000];
     int count = 0;
@@ -187,8 +181,7 @@ int dir_ls(char* ls_list, const char *filename)
  * 3. compare the same filename
  * 4. if there is the same folder name return "T" else return "F"
  */
-int dir_search(const char *pwd, const char *foldername)
-{
+int dir_search(const char *pwd, const char *foldername) {
     int i;
     bool is_folder = false;
     char get_files[500];
@@ -227,8 +220,7 @@ int dir_search(const char *pwd, const char *foldername)
  * 5. Save the inode_id into inode_entries[x].inode_id
  * 6. Return ture
  */
-int dir_create(const char *pwd, const char *foldername)
-{
+int dir_create(const char *pwd, const char *foldername) {
     bool is_created = false;
     bool is_same = false;
     int i;
@@ -293,8 +285,7 @@ int dir_create(const char *pwd, const char *foldername)
  *dir_rename: mv foldername newname,
  *success return 0, failed return -1
  */
-int dir_rename(const char *pwd, const char *foldername, const char *newname)
-{
+int dir_rename(const char *pwd, const char *foldername, const char *newname) {
     int i;
     char str[1000];
     if (strcmp(pwd, "/") == 0)
@@ -361,8 +352,7 @@ int dir_rename(const char *pwd, const char *foldername, const char *newname)
  *destination = pwd/foldername
  *success return 0, failed return -1
  */
-int dir_change(const char* destination)
-{
+int dir_change(const char* destination) {
     int i;
     // inode_entry inode_entries[INODE_NUM];
     //look for destination directory
@@ -383,8 +373,7 @@ int dir_change(const char* destination)
  *can only delete empty directory
  *success return 0, failed return -1
  */
-int dir_delete(const char *pwd, const char *foldername)
-{
+int dir_delete(const char *pwd, const char *foldername) {
     int i;
     char str[1000];
     if (strcmp(pwd, "/") == 0)
